@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ecomind - Module 1</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Base styles for the body and overall layout */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f0f0f0; /* Default background for the body */
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            padding-top: 64px; /* Matches the header height to prevent content overlap */
+        }
+
+        /* Header Navigation Bar Styles */
+        .header-nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: white;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            padding: 12px 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            border-bottom-left-radius: 10px;
+            border-bottom-right-radius: 10px;
+            height: 64px;
+            width: 100%;
+        }
+        .header-nav .logo-text {
+            font-weight: bold;
+            color: #333;
+            font-size: 1.2em; /* Equivalent to Tailwind's text-xl */
+        }
+        .header-nav .logo-img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            margin-right: 8px;
+        }
+        .header-nav .nav-links {
+            display: flex;
+            align-items: center;
+            flex-wrap: nowrap;
+        }
+        .header-nav .nav-link {
+            margin-left: 20px;
+            text-decoration: none;
+            color: #555;
+            font-weight: 500;
+            white-space: nowrap;
+            transition: color 0.3s ease;
+        }
+        .header-nav .nav-link:hover {
+            color: #16a34a;
+        }
+        .header-nav .login-btn-custom {
+            background: #b0cc29;
+            color: black;
+            padding: 8px 20px;
+            border-radius: 30px;
+            font-weight: 600;
+            text-decoration: none;
+            margin-left: 30px;
+            display: inline-block;
+            transition: background-color 0.3s ease;
+            white-space: nowrap;
+        }
+        .header-nav .login-btn-custom:hover {
+            background-color: #a6bb28;
+        }
+
+        /* Module Title Section Styles */
+        .header-title-section {
+            text-align: center;
+            background-color: #E5CBAF; /* Orange background */
+            padding: 5vh 2vw; /* Responsive padding */
+        }
+        .header-title-section h1 {
+            font-size: 6.5vw; /* Responsive font size */
+            font-weight: bold;
+            margin-bottom: 0.2em;
+        }
+        .header-title-section h2 {
+            font-size: 2.7vw; /* Responsive font size */
+        }
+
+        /* Content box for dynamic content (infographics, video, quiz) */
+        .content-box {
+            min-height: 150px;
+        }
+
+        /* Footer Styles */
+        footer {
+            background-color: #4f6d3f;
+            color: #ccc;
+            padding: 40px 20px;
+            font-size: 0.9rem; /* Equivalent to Tailwind's text-sm */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        footer .footer-container {
+            max-width: 1200px;
+            margin: auto;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+            justify-content: center;
+        }
+        footer h3 {
+            color: white;
+            margin-bottom: 12px;
+        }
+        footer ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        footer ul li {
+            margin-bottom: 8px;
+        }
+        footer ul li a {
+            color: #ccc;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        footer ul li a:hover {
+            color: #a6db4a;
+        }
+        footer .bottom-bar {
+            text-align: center;
+            margin-top: 24px;
+            border-top: 1px solid #35522c;
+            padding-top: 16px;
+        }
+        footer .bottom-bar a {
+            margin: 0 12px;
+            color: #a6db4a;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body class="flex flex-col min-h-screen">
+
+    <!-- Navigation Bar (Header) -->
+    <nav class="header-nav">
+        <div class="flex items-center space-x-2">
+            <img src="https://placehold.co/40x40/6a994e/ffffff?text=Logo" alt="Ecomind Logo" class="logo-img">
+            <span class="logo-text">Ecomind</span>
+        </div>
+        <div class="hidden md:flex nav-links">
+            <a href="#" class="nav-link">Home</a>
+            <a href="#" class="nav-link">About Us</a>
+            <a href="#" class="nav-link">Module</a>
+            <a href="#" class="nav-link">Game</a>
+            <button class="login-btn-custom">Login</button>
+        </div>
+        <div class="md:hidden">
+            <button class="text-gray-700 focus:outline-none">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Main Content Area -->
+    <main id="main-content" class="flex-grow flex flex-col items-center">
+        <!-- Module Header with Solid Background -->
+        <div class="w-full header-title-section">
+            <div class="max-w-4xl mx-auto bg-white bg-opacity-70 rounded-lg shadow-xl p-8 mb-8 text-center">
+                <h1 class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-gray-800 mb-2">MODULE 1</h1>
+                <h2 class="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-medium text-gray-700">Introduction to Waste Segregation</h2>
+            </div>
+        </div>
+
+        <!-- Font Size Controls -->
+        <div class="w-full max-w-4xl px-4 flex justify-end items-center space-x-2 py-4">
+            <span class="text-gray-700 text-sm font-medium">Font Size:</span>
+            <button id="decrease-font-btn" class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-1 px-3 rounded-lg text-sm">-</button>
+            <button id="reset-font-btn" class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-1 px-3 rounded-lg text-sm">Reset</button>
+            <button id="increase-font-btn" class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-1 px-3 rounded-lg text-sm">+</button>
+        </div>
+
+        <!-- Main interactive sections, stacked vertically -->
+        <div class="w-full max-w-4xl px-4 grid grid-cols-1 gap-6 py-8">
+
+            <!-- Infographics Section -->
+            <div class="flex flex-col md:flex-row items-center justify-center bg-white bg-opacity-80 rounded-xl shadow-lg p-6">
+                <button id="infographics-btn" class="flex-shrink-0 bg-yellow-500 hover:bg-yellow-600 text-white font-semibold py-3 px-6 rounded-lg shadow-md transition duration-300 ease-in-out transform hover:scale-105 mb-4 md:mb-0 md:mr-6">
+                    Infographics
+                </button>
+                <div id="infographics-content" class="flex-grow w-full bg-green-100 rounded-lg p-4 content-box flex items-center justify-center text-gray-600 text-center">
+                    Click on the infographic to open it in full view. Explore key facts, visuals, and data at a glance to help you better understand the topic.
+                </div>
+            </div>
+
+            <!-- Video Section -->
+            <div class="flex flex-col md:flex-row items-center justify-center bg-white bg-opacity-80 rounded-xl shadow-lg p-6">
+                <button id="video-btn" class="flex-shrink-0 bg-yellow-500 hover:bg-yellow-600 text-white font-semibold py-3 px-6 rounded-lg shadow-md transition duration-300 ease-in-out transform hover:scale-105 mb-4 md:mb-0 md:mr-6">
+                    Video
+                </button>
+                <div id="video-content" class="flex-grow w-full bg-green-100 rounded-lg p-4 content-box flex items-center justify-center text-gray-600 text-center">
+                    Tap to play the video and dive deeper into the subject. Watch at your own pace and absorb insights through engaging visuals and expert explanations.
+                </div>
+            </div>
+
+            <!-- Quiz Section -->
+            <div class="flex flex-col md:flex-row items-center justify-center bg-white bg-opacity-80 rounded-xl shadow-lg p-6">
+                <button id="quiz-btn" class="flex-shrink-0 bg-yellow-500 hover:bg-yellow-600 text-white font-semibold py-3 px-6 rounded-lg shadow-md transition duration-300 ease-in-out transform hover:scale-105 mb-4 md:mb-0 md:mr-6">
+                    Quiz
+                </button>
+                <div id="quiz-content" class="flex-grow w-full bg-green-100 rounded-lg p-4 content-box flex items-center justify-center text-gray-600 text-center">
+                    Think you’ve got it down? Click to start the quiz and put your knowledge to the test. It’s a quick and fun way to review what you’ve learned!
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <div>
+                <h3 class="text-white font-semibold mb-3">ECOMIND</h3>
+                <ul class="space-y-2">
+                    <li><a href="#" class="text-[#ccc] hover:text-[#a6db4a] text-sm flex items-center"><svg class="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 24 24"><path d="M7 10v4h3v7h4v-7h3l1-4h-4V7a1 1 0 011-1h3V2h-3a5 5 0 00-5 5v3H7z"></path></svg> Instagram</a></li>
+                    <li><a href="#" class="text-[#ccc] hover:text-[#a6db4a] text-sm flex items-center"><svg class="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 24 24"><path d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8V15H8v-3h2V9.5C10 7.57 11.57 6 13.5 6H16v3h-2c-.88 0-1 .2-1 1v2h3l-1 3h-2v6.95c5.05-.5 9-4.76 9-9.95z"></path></svg> Facebook</a></li>
+                    <li><a href="#" class="text-[#ccc] hover:text-[#a6db4a] text-sm flex items-center"><svg class="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 24 24"><path d="M24 4.557c-.883.4-1.83.6-2.82.774a4.07 4.07 0 001.8-2.71c-.93.55-1.95.9-3.04 1.1A4.07 4.07 0 0012.01 2c-2.67 0-4.85 2.18-4.85 4.85 0 .38.04.75.12 1.12C7.7 8.16 4.08 6.22 1.63 3.19c-.4.68-.63 1.47-.63 2.3 0 1.68.86 3.16 2.17 4.04-.8-.03-1.55-.25-2.2-.6v.05c0 2.35 1.67 4.28 3.89 4.73-.4.1-.8.16-1.2.16-.3 0-.6-.03-.88-.08.62 1.95 2.42 3.37 4.56 3.4-.64.5-1.46.8-2.34.8-1.5 0-2.8-.8-3.7-1.9.08 1.1.4 2.1.9 3.03C6.3 20.3 8.3 21 10.5 21c7.4 0 11.4-6.12 11.4-11.4 0-.17-.003-.34-.01-.5.78-.57 1.46-1.28 2-2.08z"></path></svg> Twitter</a></li>
+                    <li><a href="#" class="text-[#ccc] hover:text-[#a6db4a] text-sm flex items-center"><svg class="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 24 24"><path d="M.2 5.5l7 4.2v-3.7L.2 1.8V5.5zm.2 12.5l7-4.2v3.7L.2 22.2V18zm8-12.7v3.7l7 4.2V8.3l-7-4.2zm0 12.7v-3.7l7-4.2v8.3l-7 4.2z"></path></svg> Pinterest</a></li>
+                </ul>
+            </div>
+            <div>
+                <h3 class="text-white font-semibold mb-3">About Us</h3>
+                <ul class="space-y-2">
+                    <li><a href="#" class="text-[#ccc] hover:text-[#a6db4a] text-sm">Our Mission</a></li>
+                    <li><a href="#" class="text-[#ccc] hover:text-[#a6db4a] text-sm">Meet the Team</a></li>
+                    <li><a href="#" class="text-[#ccc] hover:text-[#a6db4a] text-sm">Partnership</a></li>
+                    <li><a href="#" class="text-[#ccc] hover:text-[#a6db4a] text-sm">Sustainability</a></li>
+                </ul>
+            </div>
+            <div>
+                <h3 class="text-white font-semibold mb-3">Contact Us</h3>
+                <ul class="space-y-2">
+                    <li><a href="#" class="text-[#ccc] hover:text-[#a6db4a] text-sm">1-800-555-5555</a></li>
+                    <li><a href="#" class="text-[#ccc] hover:text-[#a6db4a] text-sm">Email Us</a></li>
+                    <li><a href="#" class="text-[#ccc] hover:text-[#a6db4a] text-sm">Customer Support</a></li>
+                </ul>
+            </div>
+            <div>
+                <h3 class="text-white font-semibold mb-3">Learning</h3>
+                <ul class="space-y-2">
+                    <li><a href="#" class="text-[#ccc] hover:text-[#a6db4a] text-sm">Modules</a></li>
+                    <li><a href="#" class="text-[#ccc] hover:text-[#a6db4a] text-sm">Quizzes</a></li>
+                    <li><a href="#" class="text-[#ccc] hover:text-[#a6db4a] text-sm">Games</a></li>
+                    <li><a href="#" class="text-[#ccc] hover:text-[#a6db4a] text-sm">Volunteering</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="bottom-bar">
+            &copy; 2023 Ecomind. All rights reserved. <a href="#" class="text-[#a6db4a] mx-3">Terms of Use</a> | <a href="#" class="text-[#a6db4a] mx-3">Privacy Policy</a>
+        </div>
+    </footer>
+
+    <script>
+        // Get references to buttons and content areas
+        const infographicsBtn = document.getElementById('infographics-btn');
+        const videoBtn = document.getElementById('video-btn');
+        const quizBtn = document.getElementById('quiz-btn');
+
+        const infographicsContent = document.getElementById('infographics-content');
+        const videoContent = document.getElementById('video-content');
+        const quizContent = document.getElementById('quiz-content');
+
+        // Get font size control buttons
+        const increaseFontBtn = document.getElementById('increase-font-btn');
+        const decreaseFontBtn = document.getElementById('decrease-font-btn');
+        const resetFontBtn = document.getElementById('reset-font-btn');
+
+        // Get reference to the main content area
+        const mainContent = document.getElementById('main-content');
+
+        // Store default messages for content areas
+        const defaultInfographicsContent = `
+            <div class="p-4 text-center text-gray-600">
+                Click on the infographic to open it in full view. Explore key facts, visuals, and data at a glance to help you better understand the topic.
+            </div>
+        `;
+        const defaultVideoContent = `
+            <div class="p-4 text-center text-gray-600">
+                Tap to play the video and dive deeper into the subject. Watch at your own pace and absorb insights through engaging visuals and expert explanations.
+            </div>
+        `;
+        const defaultQuizContent = `
+            <div class="p-4 text-center text-gray-600">
+                Think you’ve got it down? Click to start the quiz and put your knowledge to the test. It’s a quick and fun way to review what you’ve learned!
+            </div>
+        `;
+
+        // Default font size for the main content area
+        let initialMainFontSize;
+        let currentMainFontSize;
+        const FONT_SIZE_STEP = 1; // Step in pixels for font size adjustment
+        const MAX_FONT_SIZE_DIFF = 5; // Max difference from initial size (e.g., +5px, -5px)
+
+        // Function to update content
+        function updateContent(element, content) {
+            element.innerHTML = content;
+        }
+
+        // Function to set font size for the main content area
+        function setFontSize(size) {
+            // Apply font size to the main content wrapper
+            mainContent.style.fontSize = `${size}px`;
+            // Additionally, iterate over all paragraphs and lists within mainContent to adjust their font sizes relative to the mainContent's font size.
+            // This prevents explicit Tailwind text sizes on children from overriding the relative adjustment.
+            mainContent.querySelectorAll('p, li, h3, a:not(.nav-link, .login-btn-custom, .bottom-bar a)').forEach(element => {
+                // We're setting the font size relative to the parent, so if mainContent has font size 18px, a child with text-sm might become smaller
+                // This is a simple approach; for more fine-grained control, relative units (em/rem) should be used in original Tailwind classes.
+                // For now, we'll just let the browser scale based on the main content's font size.
+                // No direct manipulation of child font size here to rely on CSS inheritance.
+            });
+            localStorage.setItem('userMainFontSize', size); // Save preference to local storage
+        }
+
+        // Load font size from local storage on page load
+        function loadFontSize() {
+            const savedFontSize = localStorage.getItem('userMainFontSize');
+            if (savedFontSize) {
+                currentMainFontSize = parseFloat(savedFontSize);
+                setFontSize(currentMainFontSize);
+            }
+        }
+
+        // Event listeners for font size controls
+        increaseFontBtn.addEventListener('click', () => {
+            if (currentMainFontSize < initialMainFontSize + MAX_FONT_SIZE_DIFF) {
+                currentMainFontSize += FONT_SIZE_STEP;
+                setFontSize(currentMainFontSize);
+            }
+        });
+
+        decreaseFontBtn.addEventListener('click', () => {
+            if (currentMainFontSize > initialMainFontSize - MAX_FONT_SIZE_DIFF) {
+                currentMainFontSize -= FONT_SIZE_STEP;
+                setFontSize(currentMainFontSize);
+            }
+        });
+
+        resetFontBtn.addEventListener('click', () => {
+            currentMainFontSize = initialMainFontSize;
+            setFontSize(currentMainFontSize);
+        });
+
+
+        // Function to toggle content visibility
+        function toggleContent(buttonId, contentElement, newContent, defaultContent, isExternalLink = false) {
+            // If it's an external link (like the quiz), just redirect and don't toggle content on this page
+            if (isExternalLink) {
+                window.location.href = newContent;
+                return;
+            }
+
+            // Close all other content areas first
+            const allContentElements = [infographicsContent, videoContent, quizContent];
+            const allDefaultContents = [defaultInfographicsContent, defaultVideoContent, defaultQuizContent];
+
+            allContentElements.forEach((element, index) => {
+                // Only reset if it's a different content area and currently showing content (not its own default)
+                if (element !== contentElement && element.innerHTML.trim() !== allDefaultContents[index].trim()) {
+                    updateContent(element, allDefaultContents[index]);
+                }
+            });
+
+            // Toggle content for the clicked button's content area
+            // Check if the current content is the default (i.e., it's currently "closed")
+            if (contentElement.innerHTML.trim() === defaultContent.trim()) {
+                updateContent(contentElement, newContent); // Open it
+            } else {
+                updateContent(contentElement, defaultContent); // Close it
+            }
+        }
+
+        // Event listeners for each button
+        infographicsBtn.addEventListener('click', () => {
+            const infographicsHtml = `
+                <div class="p-4 bg-white rounded-lg shadow-inner text-gray-800 w-full">
+                    <h3 class="font-bold text-lg mb-4">Infographics on Waste Segregation</h3>
+                    <div class="flex flex-col items-center space-y-4">
+                        <img src="infographic11.jpg" alt="Infographic 1" class="w-full h-auto rounded-lg shadow-md max-w-xl">
+                        <img src="infographic12.jpg" alt="Infographic 2" class="w-full h-auto rounded-lg shadow-md max-w-xl">
+                        <img src="infographic13.jpg" alt="Infographic 3" class="w-full h-auto rounded-lg shadow-md max-w-xl">
+                    </div>
+                    <button id="close-infographics-btn" class="mt-6 bg-red-500 hover:bg-red-600 text-white font-semibold py-2 px-4 rounded-lg shadow-md transition duration-300 ease-in-out">
+                        Close Infographics
+                    </button>
+                    <a href="#" class="text-blue-600 hover:underline mt-4 inline-block">Top (Optional)</a>
+                </div>
+            `;
+            toggleContent('infographics-btn', infographicsContent, infographicsHtml, defaultInfographicsContent);
+
+            // Add event listener for the new close button if it exists
+            const closeInfographicsBtn = document.getElementById('close-infographics-btn');
+            if (closeInfographicsBtn) {
+                closeInfographicsBtn.addEventListener('click', () => {
+                    updateContent(infographicsContent, defaultInfographicsContent);
+                });
+            }
+        });
+
+        videoBtn.addEventListener('click', () => {
+            const videoHtml = `
+                <div class="w-full h-auto bg-white rounded-lg shadow-inner p-4 text-gray-800">
+                    <h3 class="font-bold text-lg mb-2">Educational Video: Environmental Impacts</h3>
+                    <div class="relative w-full" style="padding-top: 56.25%;"> <!-- 16:9 Aspect Ratio -->
+                        <iframe class="absolute top-0 left-0 w-full h-full rounded-md" src="https://www.youtube.com/embed/0ZiD_Lb3Tm0?autoplay=1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                    <p class="mt-4">Waste segregation is the practice of separating waste into different categories, such as organic, recyclable, and hazardous materials. By doing this, we can ensure that each type of waste is disposed ofproperly, reducing pollution, conserving resources, and promoting a healthier planet.</p>
+                    </div>
+            `;
+            toggleContent('video-btn', videoContent, videoHtml, defaultVideoContent);
+        });
+
+        quizBtn.addEventListener('click', () => {
+            // This will directly redirect, no content toggle on the current page for quiz
+            toggleContent('quiz-btn', quizContent, 'quiz.html', defaultQuizContent, true);
+        });
+
+        // Initialize content areas with default messages and load font size on page load
+        window.onload = function() {
+            // Ensure mainContent element is available before getting its computed style
+            if (mainContent) {
+                // Redefine initialMainFontSize and currentMainFontSize after mainContent is available
+                initialMainFontSize = parseFloat(getComputedStyle(mainContent).fontSize);
+                currentMainFontSize = initialMainFontSize;
+            }
+
+            updateContent(infographicsContent, defaultInfographicsContent);
+            updateContent(videoContent, defaultVideoContent);
+            updateContent(quizContent, defaultQuizContent);
+            loadFontSize(); // Load saved font size
+        };
+
+    </script>
+</body>
+</html>
